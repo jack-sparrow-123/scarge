@@ -13,19 +13,22 @@
     <div class="smoke" style="animation-delay: 0.2s;"></div>
     <div class="smoke" style="animation-delay: 0.4s;"></div>
         <script src="script.js"></script>
-        <audio controls>
-            <source src="explosion.mp3.wav" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio> 
-     <script>
+   <script>
     function playSound() {
       var audio = new Audio('explosion.mp3.wav');
       audio.play();
     }
 
-    window.onload = function() {
+    function handleInteraction() {
       playSound();
+      document.body.removeEventListener('click', handleInteraction);
+    }
+
+    window.onload = function() {
+      document.body.addEventListener('click', handleInteraction);
+      alert('Please click anywhere on the page to hear the sound.');
     };
   </script>
+    <h1> please click anywhere on the page to hear the sound</h1>
 </body>
 </html>
